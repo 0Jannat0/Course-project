@@ -236,6 +236,8 @@ public class Main {
 
         double avg = (double) totalWait / servedCount;
 
-        System.out.printf("Served count = %d, Avg wait = %.2f min.%n", servedCount, avg);
+        System.out.println(
+                "Served count = " + servedCount +
+                        ", Avg wait = " + avg + " min.");
     }
 }
