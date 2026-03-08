@@ -247,7 +247,6 @@ public class Main {
 
 
 
-
     // Empirical timing experiment
     public static void timingExperiment() {
 
