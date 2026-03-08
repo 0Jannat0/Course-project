@@ -13,6 +13,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        timingExperiment();
+
         System.out.println("Cafeteria Line Manager — Commands:");
         help();
 
@@ -239,5 +241,45 @@ public class Main {
         System.out.println(
                 "Served count = " + servedCount +
                         ", Avg wait = " + avg + " min.");
+    }
+
+
+
+
+
+
+    // Empirical timing experiment
+    public static void timingExperiment() {
+
+        int[] sizes = {10000, 50000, 100000};
+        int runs = 5; // number of repetitions
+
+        System.out.println("Timing experiment (ArrayDeque insertion)");
+        System.out.println("-----");
+        for (int n : sizes) {
+
+            long totalTime = 0;
+
+            for (int r = 0; r < runs; r++) {
+
+                ArrayDeque<String> queue = new ArrayDeque<>();
+
+                long start = System.nanoTime();
+
+                for (int i = 0; i < n; i++) {
+                    queue.add("Customer" + i);
+                }
+
+                long end = System.nanoTime();
+
+                totalTime += (end - start);
+            }
+
+            long average = totalTime / runs;
+
+            System.out.println("Queue size: " + n + " -> Avg time: " + average + " ns");
+        }
+
+        System.out.println("-----");
     }
 }
